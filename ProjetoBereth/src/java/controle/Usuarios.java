@@ -11,9 +11,12 @@ package controle;
 public class Usuarios {
     private int id_usuario ;
     private String cpf ;
+    private String rg;
     private String nome ;
     private String email ;
-
+    private int idade;
+    private String nascimento; 
+    
     public int getId_usuario() {
         return id_usuario;
     }
@@ -45,5 +48,31 @@ public class Usuarios {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
+    }
         
+    
+    
 }
