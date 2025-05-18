@@ -13,20 +13,24 @@ import java.sql.PreparedStatement;
  */
 public class ManterUsuario extends DAO {
     
-public void inserir(Usuarios u) throws Exception {
+public boolean inserir(Usuarios u){
         try {
             abrirBanco();
-            String query = "INSERT INTO usuarios (id_usuario, cpf, nome, email)"
-                    + "values(null, ?, ?, ?)";
+            String query = "INSERT INTO usuario (cpf, rg, nome, nascimento)"
+                    + "values(?, ?, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
             pst.setString(1, u.getCpf());
-            pst.setString(2, u.getNome());
-            pst.setString(3, u.getEmail());
-            pst.execute();
+            pst.setString(2, u.getRg());
+            pst.setString(3, u.getNome());
+            pst.setString(4, u.getNascimento());
+            int linhasAfetadas = pst.executeUpdate(); // Retorna número de linhas afetadas
+
             fecharBanco();
-        } catch (Exception e){
-            System.out.println("Erro " + e.getMessage());
+            return linhasAfetadas > 0; // Se inseriu, retorna true
+        } catch (Exception e) {
+            System.out.println("Erro ao inserir cliente: " + e.getMessage());
+            return false;
         }
+
     }
-    
 }

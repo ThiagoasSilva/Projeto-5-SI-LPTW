@@ -25,7 +25,7 @@ public class DAO {
     public void abrirBanco() throws SQLException {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost/BerethConcessionaria";
+            String url = "jdbc:mysql://localhost/berethdb";
             String user = "root";
             String senha = "";
             
