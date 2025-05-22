@@ -19,13 +19,13 @@ create table usuario(
 	cep VARCHAR(11) not null,
 	nascimento date not null,
 	dataRegistro datetime default CURRENT_TIMESTAMP() not null,
-		primary key(id_usuario)
+	primary key(id_usuario)
 );
 
 create table veiculo(
-	idVeiculo INT auto_increment,
+	idveiculo INT auto_increment,
 	categoria ENUM("Carro", "Moto"),
-	tipo enum("Sedan", "SUV", "Hatch", "Picape", "Minivan", "Cupê",
+	tipo ENUM("Sedan", "SUV", "Hatch", "Picape", "Minivan", "Cupê",
 			"Perua", "Roadster", "Utilitário","Esportiva", "Naked", 
 			"Custom", "Touring", "Big Trail", "Scooter", "Ciclomotor", 
 			"Motocross", "Enduro"),
@@ -41,5 +41,5 @@ create table veiculo(
 	anoModelo YEAR(4),
 	placa VARCHAR(8),
 	chassi VARCHAR(17),
-		primary key(id_usuario) references usuario(id_usuario)
+	primary key(idveiculo)
 );
