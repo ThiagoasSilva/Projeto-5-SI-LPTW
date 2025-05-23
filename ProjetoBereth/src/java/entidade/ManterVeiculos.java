@@ -20,17 +20,20 @@ public class ManterVeiculos extends DAO{
                         +  "assentos ,anoFabricacao, anoModelo, placa, chassi"
                         +  "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
-            pst.setString(1, v.getCpf());
-            pst.setString(2, v.getRg());
-            pst.setString(3, v.getNome());
-            pst.setString(4, v.getNascimento());
-            pst.setString(4, v.getNascimento());
-            pst.setString(4, v.getNascimento());
-            pst.setString(4, v.getNascimento());
-            pst.setString(4, v.getNascimento());
-            pst.setString(4, v.getNascimento());
-            pst.setString(4, v.getNascimento());
-            pst.setString(4, v.getNascimento());
+            pst.setString(1, v.getCategoria());
+            pst.setString(2, v.getTipo());
+            pst.setString(3, v.getMarca());
+            pst.setString(4, v.getModelo());
+            pst.setString(5, v.getCor());
+            pst.setInt(6, v.getRodas());
+            pst.setFloat(7, v.getMotorizacao());
+            pst.setFloat(8, v.getPeso());
+            pst.setFloat(9, v.getCapTanque());
+            pst.setInt(10, v.getAssentos());
+            pst.setInt(11, v.getAnoFabr());
+            pst.setInt(12, v.getAnoModelo());
+            pst.setString(13, v.getPlaca());
+            pst.setString(14, v.getChassi());
             
             int linhasAfetadas = pst.executeUpdate(); // Retorna número de linhas afetadas
 
