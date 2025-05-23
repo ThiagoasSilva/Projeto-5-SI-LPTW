@@ -7,18 +7,9 @@ create table usuario(
 	email varchar(80) not null,
 	senha varchar(100) not null,
 	cpf varchar(11) not null,
-	rg varchar(11)not null,
-	nome varchar(255)not null,
+	nome varchar(255),
 	telefone varchar(16),
-	idade int,
-	numero INT not null,
-	bairro VARCHAR(50) not null,
-	cidade VARCHAR(50) not null,
-	estado VARCHAR(50) not null,
-	complemento VARCHAR(255),
-	cep VARCHAR(11) not null,
-	nascimento date not null,
-	dataRegistro datetime default CURRENT_TIMESTAMP() not null,
+	endereco varchar(255),
 	primary key(id_usuario)
 );
 
