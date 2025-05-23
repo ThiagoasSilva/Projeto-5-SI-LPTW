@@ -4,8 +4,16 @@
         <servlet-name>ServletCadastroUsuario</servlet-name>
         <servlet-class>bean.ServletCadastroUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>bean.ServletLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCadastroUsuario</servlet-name>
         <url-pattern>/ServletCadastroUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/ServletLogin</url-pattern>
     </servlet-mapping>
 </web-app>
