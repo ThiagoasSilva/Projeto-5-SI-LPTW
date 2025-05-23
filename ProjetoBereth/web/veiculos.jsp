@@ -5,12 +5,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.controller.Produtos" %>
-<%@ page import="com.model.ProdutosDAO" %>
+<%@ page import="controle.Veiculos" %>
+<%@ page import="entidade.VeiculosDAO" %>
 <%
     // Cria o objeto de acesso aos dados e pesquisa todos os produtos
-    ProdutosDAO produtosDAO = new ProdutosDAO();
-    ArrayList<Produtos> listaProdutos = produtosDAO.pesquisarTudo();
+    VeiculosDAO produtosDAO = new VeiculosDAO();
+    ArrayList<Veiculos> listaProdutos = produtosDAO.pesquisarTudo();
 %>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -51,15 +51,14 @@
             <section class="grid grid-template-columns-4">
                 <%
                     // Laço para iterar pelos produtos e exibi-los
-                    for (Produtos produto : listaProdutos) {
+                    for (Veiculos produto : listaProdutos) {
                 %>
                     <div class="item">
                         <%-- Altere o src abaixo para utilizar a imagem real, se a classe possuir essa informação --%>
                         <img class="imgProduto" src="<%= produto.getImagem() %>" alt="Imagem do Produto">
                         <%-- <h3>ID: <%= produto.getId() %></h3> --%>
-                        <h3>Nome: <%= produto.getNome() %></h3>
-                        <p>Preço: R$<%= produto.getPreco() %></p>
-                        <p>Receita? <%= produto.isReceita() ? "Sim" : "Não" %></p>
+                        <h3>Nome: <%= produto.getModelo() %></h3>
+                        <h3>Ano: <%= produto.getAnoFabricacao() %></h3>
                         <%-- Link para efetuar a compra/pedido do produto (ajuste o caminho conforme sua estrutura) --%>
                         <button class="comprarButton">
                             <a href="AdicionarCarrinho?idproduto=<%= produto.getId() %>&quantidade=1" class="comprarButton">Adicionar ao carrinho</a>

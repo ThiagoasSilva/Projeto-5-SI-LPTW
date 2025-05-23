@@ -4,6 +4,7 @@
  */
 package entidade;
 
+import controle.Veiculos;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -12,21 +13,19 @@ import java.util.ArrayList;
  * @author laboratorio
  */
 public class VeiculosDAO extends DAO{
-    public ArrayList<Produtos> pesquisarTudo() {
-        ArrayList<Produtos> listaProdutos = new ArrayList<Produtos>();
+    public ArrayList<Veiculos> pesquisarTudo() {
+        ArrayList<Veiculos> listaProdutos = new ArrayList<Veiculos>();
         try {
             abrirBanco();
-            String query = "SELECT id, nome, preco, estoque, receita, imagem FROM produtos";
+            String query = "SELECT idveiculo, modelo, anoFabricacao, imagem FROM veiculo";
             pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
-            Produtos produto;
+            Veiculos produto;
             while (rs.next()) {
-                produto = new Produtos();
-                produto.setId(rs.getInt("id"));
-                produto.setNome(rs.getString("nome"));
-                produto.setPreco(rs.getDouble("preco"));
-                produto.setEstoque(rs.getInt("estoque"));
-                produto.setReceita(rs.getBoolean("receita"));
+                produto = new Veiculos();
+                produto.setIdveiculo(rs.getInt("idveiculo"));
+                produto.setModelo(rs.getString("modelo"));
+                produto.setAnoFabricacao(rs.getString("anoFabricacao"));
                 produto.setImagem(rs.getString("imagem"));
                 listaProdutos.add(produto);
             }
