@@ -25,7 +25,7 @@
             <li><a href="index.jsp">Home</a></li>
 
             <% if (usuario == null) { %>
-                <li><a href="produtos.jsp">Produtos</a></li>
+                <li><a href="veiculos.jsp">Produtos</a></li>
             <% } else { %>
                 <li><a href="view/viewFuncionario/Produtofuncionario.jsp">ProdutosFuncionario</a></li>
             <% } %>
