@@ -4,12 +4,14 @@
  */
 package bean;
 
+import controle.Veiculos;
+import entidade.ManterVeiculos;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -30,16 +32,49 @@ public class ServletCadVeiculos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletCadVeiculos</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletCadVeiculos at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            int id_veiculo = Integer.parseInt(String.valueOf("id_veiculo"));
+            String categoria = request.getParameter("categoria");
+            String tipo = request.getParameter("tipo");
+            String marca = request.getParameter("marca");
+            String modelo = request.getParameter("modelo");
+            String cor = request.getParameter("cor");
+            int rodas = Integer.parseInt(String.valueOf("rodas"));
+            float motorizacao = Integer.parseInt(String.valueOf("motorizacao"));
+            float peso = Integer.parseInt(String.valueOf("peso"));
+            float capTanque = Integer.parseInt(String.valueOf("capTanque"));
+            int assentos = Integer.parseInt(String.valueOf("assentos"));
+            int anoFabr = Integer.parseInt(String.valueOf("anoFabr"));
+            int anoModelo = Integer.parseInt(String.valueOf("anoModelo"));
+            String placa = request.getParameter("placa");
+            String chassi = request.getParameter("chassi");
+
+            Veiculos v = new Veiculos();
+            v.setId_veiculo(id_veiculo);
+            v.setCategoria(categoria);
+            v.setTipo(tipo);
+            v.setMarca(marca);
+            v.setModelo(modelo);
+            v.setCor(cor);
+            v.setRodas(rodas);
+            v.setMotorizacao(motorizacao);
+            v.setPeso(peso);
+            v.setCapTanque(capTanque);
+            v.setAssentos(assentos);
+            v.setAnoFabr(anoFabr);
+            v.setAnoModelo(anoModelo);
+            v.setPlaca(placa);
+            v.setChassi(chassi);
+            
+            ManterVeiculos manter = new ManterVeiculos();
+            boolean sucesso = manter.inserir(v);
+
+            if (sucesso) {
+                // Redireciona com mensagem de sucesso na URL
+                response.sendRedirect("login.jsp?mensagem=Cadastro%20realizado%20com%20sucesso!");
+            } else {
+                // Redireciona com mensagem de erro na URL
+                response.sendRedirect("cadastro.jsp?mensagem=Erro%20ao%20realizar%20o%20cadastro");
+            }
         }
     }
 
