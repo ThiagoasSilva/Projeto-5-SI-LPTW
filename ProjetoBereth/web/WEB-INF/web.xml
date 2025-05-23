@@ -7,6 +7,8 @@
     <servlet>
         <servlet-name>ServletCadVeiculos</servlet-name>
         <servlet-class>bean.ServletCadVeiculos</servlet-class>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>bean.ServletLogin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletCadastroUsuario</servlet-name>

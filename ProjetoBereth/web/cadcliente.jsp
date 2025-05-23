@@ -18,16 +18,8 @@
                 <input type="text" id="cpf" name="cpf" maxlength="40" placeholder="CPF" required/>
             </p>
             <p> 
-                RG:
-                <input type="text" id="rg" name="rg" maxlength="40" placeholder="CPF" required/>
-            </p>
-            <p> 
                 Nome:
                 <input type="text" id="nome" name="nome" maxlength="40" placeholder="Nome Completo" required/>
-            </p>
-            <p> 
-                Nascimento:
-                <input type="text" id="nascimento" name="nascimento" maxlength="40" placeholder="CPF" required/>
             </p>
             <p> 
                 E-mail:
@@ -36,6 +28,10 @@
             <p> 
                 Senha:
                 <input type="password" id="senha" name="senha" maxlength="40" placeholder="Senha" required />
+            </p>
+            <p> 
+                Endereco:
+                <input type="text" id="endereco" name="endereco" maxlength="40" placeholder="endereco" required />
             </p>
             <div>
                 <button type="submit" value="Registrar">Cadastrar</button>
