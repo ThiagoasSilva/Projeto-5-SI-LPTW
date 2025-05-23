@@ -35,14 +35,14 @@ create table veiculo(
 		primary key(id_veiculo)
 );
 
-create table vendas(
+create table venda(
 	id_venda int auto_increment,
     id_usuario int, -- comprador
     id_veiculo int,
     formaPagamento enum("Débito","Crédito","Dinheiro","Bitcoin"),
     parcelas int,
     valor decimal(15,2),
-    dataVenda timestamp,
+    dataVenda datetime,
 		primary key (id_venda),
         foreign key (id_usuario) references usuario(id_usuario),
         foreign key (id_veiculo) references veiculo(id_veiculo)

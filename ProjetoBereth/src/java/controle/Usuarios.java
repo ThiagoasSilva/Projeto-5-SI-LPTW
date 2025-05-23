@@ -16,8 +16,6 @@ public class Usuarios {
     private String email ;
     private int idade;
     private String nascimento; 
-    private String senha;
-    private String endereco;
     
     public int getId_usuario() {
         return id_usuario;
@@ -74,24 +72,7 @@ public class Usuarios {
     public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
     }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-    
-    
+        
     
     
 }

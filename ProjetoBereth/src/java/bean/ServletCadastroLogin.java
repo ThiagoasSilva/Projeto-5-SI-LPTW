@@ -5,7 +5,6 @@
 package bean;
 
 import controle.UsuarioLogin;
-import controle.Usuarios;
 import entidade.LoginDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,20 +36,14 @@ public class ServletCadastroLogin extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
-            String nome = request.getParameter("nome");
-            String cpf = request.getParameter("cpf");
-            String endereco = request.getParameter("endereco");
 
 
-            Usuarios us = new Usuarios();
-            us.setCpf(cpf);
-            us.setNome(nome);
-            us.setEmail(email);
-            us.setSenha(senha);
-            us.setEndereco(endereco);
+            UsuarioLogin login = new UsuarioLogin();
+            login.setEmail(email);
+            login.setSenha(senha);
 
             LoginDAO loginDAO = new LoginDAO();
-            boolean sucesso = loginDAO.inserir(us);
+            boolean sucesso = loginDAO.inserir(login);
 
             if (sucesso) {
                 // Redireciona com mensagem de sucesso na URL

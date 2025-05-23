@@ -6,24 +6,20 @@
 package entidade;
 
 import controle.UsuarioLogin;
-import controle.Usuarios;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginDAO extends DAO {
 
-    public boolean inserir(Usuarios login) {
+    public boolean inserir(UsuarioLogin login) {
     try {
         abrirBanco();
         String senhaCriptografada = BCrypt.hashpw(login.getSenha(), BCrypt.gensalt());
-        String query = "INSERT INTO usuario (email, senha, cpf, nome, endereco) VALUES(?, ?, ?, ?, ?)";
+        String query = "INSERT INTO usuarioLogin (email, senha) VALUES(?, ?)";
         pst = con.prepareStatement(query);
         pst.setString(1, login.getEmail());
         pst.setString(2, senhaCriptografada);
-        pst.setString(3, login.getCpf());
-        pst.setString(4, login.getNome());
-        pst.setString(5, login.getEndereco());
 
 
         int linhasAfetadas = pst.executeUpdate(); // Retorna número de linhas afetadas
@@ -36,12 +32,12 @@ public class LoginDAO extends DAO {
     }
 }
 
-    public Usuarios pesquisar(Usuarios login) {
-        Usuarios loginBuscado = new Usuarios();
+    public UsuarioLogin pesquisar(UsuarioLogin login) {
+        UsuarioLogin loginBuscado = new UsuarioLogin();
 
         try {
             abrirBanco();
-            String query = "SELECT id_usuario, nome, email, senha, endereco FROM usuario WHERE email = ?";
+            String query = "SELECT id, nome, email, senha, endereco FROM clientes WHERE email = ?";
             pst = con.prepareStatement(query);
             pst.setString(1, login.getEmail());
 
@@ -52,10 +48,10 @@ public class LoginDAO extends DAO {
 
                 // Verificar se a senha informada corresponde ao hash armazenado
                 if (BCrypt.checkpw(login.getSenha(), senhaHashBanco)) {
-                    loginBuscado = new Usuarios();
-                    loginBuscado.setId_usuario(rs.getInt("id_usuario"));
+                    loginBuscado = new UsuarioLogin();
+                    loginBuscado.setId_login(rs.getInt("id"));
                     loginBuscado.setEmail(rs.getString("email"));
-                    loginBuscado.setSenha(rs.getString("senha"));
+                    loginBuscado.setSenha(rs.getString("endereco"));
                     // você pode adicionar mais campos se precisar
                 }
             }

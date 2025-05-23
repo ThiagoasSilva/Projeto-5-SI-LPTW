@@ -12,8 +12,8 @@ import java.sql.PreparedStatement;
  * @author thiagosilva
  */
 public class ManterUsuario extends DAO {
-
-    public boolean inserir(Usuarios u) {
+    
+public boolean inserir(Usuarios u){
         try {
             abrirBanco();
             String query = "INSERT INTO usuario (cpf, rg, nome, nascimento)"
