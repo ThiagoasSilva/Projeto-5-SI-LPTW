@@ -14,7 +14,7 @@ create table usuario(
 );
 
 create table veiculo(
-	idveiculo INT auto_increment,
+	id_veiculo INT auto_increment,
 	categoria ENUM("Carro", "Moto"),
 	tipo ENUM("Sedan", "SUV", "Hatch", "Picape", "Minivan", "Cupê",
 			"Perua", "Roadster", "Utilitário","Esportiva", "Naked", 
@@ -32,5 +32,5 @@ create table veiculo(
 	anoModelo YEAR(4),
 	placa VARCHAR(8),
 	chassi VARCHAR(17),
-	primary key(idveiculo)
+		primary key(id_veiculo)
 );
