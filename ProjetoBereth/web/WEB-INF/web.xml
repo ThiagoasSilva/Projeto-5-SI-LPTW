@@ -4,8 +4,16 @@
         <servlet-name>ServletCadastroUsuario</servlet-name>
         <servlet-class>bean.ServletCadastroUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCadVeiculos</servlet-name>
+        <servlet-class>bean.ServletCadVeiculos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCadastroUsuario</servlet-name>
         <url-pattern>/ServletCadastroUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCadVeiculos</servlet-name>
+        <url-pattern>/cadastroveiculos</url-pattern>
     </servlet-mapping>
 </web-app>
