@@ -4,23 +4,21 @@
  */
 package bean;
 
-import controle.UsuarioLogin;
 import controle.Usuarios;
 import entidade.LoginDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author bryan
+ * @author laboratorio
  */
-@WebServlet(name = "ServletCadastroLogin", urlPatterns = {"/ServletCadastroLogin"})
-public class ServletCadastroLogin extends HttpServlet {
+public class ServletLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,27 +35,26 @@ public class ServletCadastroLogin extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
-            String nome = request.getParameter("nome");
-            String cpf = request.getParameter("cpf");
-            String endereco = request.getParameter("endereco");
 
-
-            Usuarios us = new Usuarios();
-            us.setCpf(cpf);
-            us.setNome(nome);
-            us.setEmail(email);
-            us.setSenha(senha);
-            us.setEndereco(endereco);
+            Usuarios login = new Usuarios();
+            login.setEmail(email);
+            login.setSenha(senha);
 
             LoginDAO loginDAO = new LoginDAO();
-            boolean sucesso = loginDAO.inserir(us);
 
-            if (sucesso) {
-                // Redireciona com mensagem de sucesso na URL
-                response.sendRedirect("login.jsp?mensagem=Cadastro%20realizado%20com%20sucesso!");
+            Usuarios loginBuscado = loginDAO.pesquisar(login);
+
+            if (loginBuscado.getEmail() != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id_usuario", loginBuscado.getId_usuario());
+                session.setAttribute("nome", loginBuscado.getNome());
+                session.setAttribute("email", loginBuscado.getEmail());
+                session.setAttribute("endereco", loginBuscado.getEndereco());
+                
+                
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
-                // Redireciona com mensagem de erro na URL
-                response.sendRedirect("cadastro.jsp?mensagem=Erro%20ao%20realizar%20o%20cadastro");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }
     }
